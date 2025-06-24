@@ -1,0 +1,56 @@
+/* src/app/features/chat/chat.component.css */
+
+/* Centrar todo el chat en la pantalla */
+.chat-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #e0f7fa;        /* color de fondo general */
+}
+
+/* Tamaño y fondo de la tarjeta */
+.chat-card {
+  width: 600px;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Ventana de mensajes con fondo suave */
+.chat-window .p-scrollpanel-content {
+  background: #fafafa;
+  padding: 1rem;
+  position: relative;
+}
+
+/* Mensajes de usuario e IA con color diferenciado */
+.message.user {
+  color: #1976d2;
+}
+.message.ia {
+  color: #2e7d32;
+}
+
+/* Zona de entrada de texto */
+.input-area {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Overlay para el spinner */
+.spinner-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.7);
+  z-index: 10;
+}
+
+/* Input con flex */
+input[pInputText] {
+  flex: 1;
+}

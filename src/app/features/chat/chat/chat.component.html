@@ -1,0 +1,32 @@
+<!-- src/app/features/chat/chat.component.html -->
+<div class="chat-container">
+<p-card header="Chat con Gemini" class="chat-card">
+  <p-scrollPanel [style]="{ 'height': '300px' }" class="chat-window">
+    <div *ngFor="let m of messages" class="message" [ngClass]="m.from">
+      <strong>{{ m.from === 'user' ? 'Tú' : 'IA' }}:</strong>
+      <span [innerHTML]="m.text | simpleMarkdown"></span>
+    </div>
+
+    <div *ngIf="loading" class="spinner-overlay">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+  </p-scrollPanel>
+
+    <div class="input-area">
+      <input
+        pInputText
+        [(ngModel)]="userInput"
+        placeholder="Escribe tu mensaje"
+        [disabled]="loading"
+        (keyup.enter)="send()"
+      />
+      <button
+        pButton
+        label="Enviar"
+        icon="pi pi-send"
+        (click)="send()"
+        [disabled]="!userInput.trim() || loading"
+      ></button>
+    </div>
+  </p-card>
+</div>
