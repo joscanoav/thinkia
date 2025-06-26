@@ -1,3 +1,16 @@
-<p-card>
-  <router-outlet></router-outlet>
-</p-card>
+<!-- src/app/app.component.html -->
+<!-- Título para el test; si no quieres que se vea, dale clase sr-only -->
+<h1 class="sr-only">Hello, {{ title }}</h1>
+
+<app-header></app-header>
+
+<main class="main-content">
+  <div class="chat-wrapper">
+    <p-card class="chat-card">
+      <router-outlet></router-outlet>
+    </p-card>
+  </div>
+</main>
+
+<app-footer></app-footer>
+

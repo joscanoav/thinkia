@@ -1,3 +1,27 @@
-:host ::ng-deep .p-card {
-  margin: 2rem;
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;       /* 100% del viewport */
+  overflow: hidden;     /* Evita scroll global */
 }
+
+/* Header y footer mantienen su altura natural; Main crece */
+.main-content {
+  flex: 1;              /* ocupa todo el espacio entre header y footer */
+  display: flex;
+  justify-content: center; 
+  align-items: flex-start;
+  padding: 1rem;        /* espacio alrededor */
+  background-color: #e6f7f9;
+  overflow: hidden;     /* Evita scroll global */
+}
+
+/* El wrapper de la tarjeta hará flex-col y llenará el alto de main */
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;         /* importante: llenar main-content */
+}
+

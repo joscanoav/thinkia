@@ -1,0 +1,14 @@
+/* header.component.scss */
+:host ::ng-deep .p-menubar {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+body.dark {
+  --color-bg: #1e293b;
+  --color-primary: #10b981;
+  /* ajusta tablas, textos, bordes… */
+}
+
+
+
+

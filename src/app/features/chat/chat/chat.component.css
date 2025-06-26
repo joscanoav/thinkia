@@ -1,56 +1,46 @@
-/* src/app/features/chat/chat.component.css */
-
-/* Centrar todo el chat en la pantalla */
-.chat-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #e0f7fa;        /* color de fondo general */
-}
-
-/* Tamaño y fondo de la tarjeta */
+/* Quita el height:80vh; y usa flex */
 .chat-card {
-  width: 600px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;               /* llena todo el wrapper */
+  margin: 0;
   background: #ffffff;
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Ventana de mensajes con fondo suave */
+/* La ventana de mensajes ocupa el espacio sobrante */
+.chat-window {
+  flex: 1;               /* crece para dejar espacio al input */
+  overflow: hidden;      /* scroll interno en el contenido */
+}
+
 .chat-window .p-scrollpanel-content {
-  background: #fafafa;
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
-  position: relative;
+  background: #fafafa;
+  overflow-y: auto;      /* scroll solo aquí */
 }
 
-/* Mensajes de usuario e IA con color diferenciado */
-.message.user {
-  color: #1976d2;
-}
-.message.ia {
-  color: #2e7d32;
-}
-
-/* Zona de entrada de texto */
+/* Zona de input pegada al final */
 .input-area {
+  flex-shrink: 0;
   display: flex;
   gap: 0.5rem;
-  margin-top: 1rem;
+  padding: 1rem;
+  border-top: 1px solid #eee;
+  background: #fff;
 }
-
-/* Overlay para el spinner */
-.spinner-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255,255,255,0.7);
-  z-index: 10;
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
-/* Input con flex */
-input[pInputText] {
-  flex: 1;
+.message { animation: fadeInUp 0.2s ease-out; }
+@media (max-width: 640px) {
+  .chat-card {
+    width: calc(100% - 1rem);
+    margin: 0.5rem;
+    height: calc(100vh - 120px); /* header + footer estimados */
+  }
 }

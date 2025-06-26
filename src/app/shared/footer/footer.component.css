@@ -1,0 +1,6 @@
+/* footer.component.scss */
+:host ::ng-deep .footer-toolbar {
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+}
