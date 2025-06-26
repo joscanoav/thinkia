@@ -11,8 +11,8 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { SimpleMarkdownPipe } from '../../../shared/pipes/markdown.pipe';
-import { GeminiService } from '../../../services/gemini.service';
+import { SimpleMarkdownPipe } from '../../shared/pipes/markdown.pipe';
+import { GeminiService } from '../../services/gemini.service';
 
 interface Message {
   from: 'user' | 'ia';

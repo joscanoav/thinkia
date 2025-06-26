@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { ChatComponent } from './features/chat/chat/chat.component';
+import { ChatComponent } from './features/chat/chat.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'chat', pathMatch: 'full' },
