@@ -3,11 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-interface GeminiRequest { contents: { parts: { text: string }[] }[]; }
-interface GeminiResponse { candidates: { content: { parts: { text: string }[] } }[]; }
+// Definición de la estructura de la respuesta recibida desde la API de Gemini
+interface GeminiResponse {
+  candidates: { content: { parts: { text: string }[] } }[];
+}
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'root' }) // El servicio está disponible a nivel de toda la aplicación
 export class GeminiService {
+  // URL de la API de Gemini con la clave de acceso configurada en environment
   private url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${environment.geminiApiKey}`;
 
   /** Texto que define el rol de la IA (nutricionista, veterinario...) */
@@ -30,7 +33,7 @@ Fluye así con el usuario:
 **Ejemplo de interacción**  
 Usuario: “Quiero un menú para esta semana en una tabla”  
 Asistente (solo tabla Markdown):  
-\`\`\`
+
 | Día      | Desayuno                       | Almuerzo                           | Cena                              |
 |----------|--------------------------------|------------------------------------|-----------------------------------|
 | Lunes    | Avena con fruta                | Ensalada de pollo                  | Pescado al horno                  |
@@ -40,7 +43,7 @@ Asistente (solo tabla Markdown):
 | Viernes  | Panqueques de avena            | Ensalada de garbanzos              | Sopa de pollo                     |
 | Sábado   | Huevos revueltos con tomate    | Arroz integral con verduras salteadas| Pizza casera integral           |
 | Domingo  | Tostadas francesas integrales  | Paella de verduras                 | Ensalada mixta                    |
-\`\`\`
+
 `
   constructor(private http: HttpClient) {}
 
