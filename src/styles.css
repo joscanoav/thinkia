@@ -1,1 +1,127 @@
 @import "primeicons/primeicons.css";
+
+/* 1) Variables de color (modo claro + oscuro) */
+:root {
+  --bg-page:    #f0fdfa;
+  --text-color: #1e293b;
+  --menu-bg:    #ffffff;
+  --menu-text:  #1e293b;
+  --card-bg:    #ffffff;
+  --card-text: #1e293b;
+  --input-bg:   #ffffff;
+  --input-text: #1e293b;
+  --border:     #e2e8f0;
+  --primary:    #178cc7;
+}
+body.dark {
+  --bg-page:    #1e293b;
+  --text-color: #f0fdfa;
+  --menu-bg:    #0f172a;
+  --menu-text:  #f0fdfa;
+  --card-bg:    #1e1f2b;
+  --card-text: #f0fdfa;
+  --input-bg:   #1e293b;
+  --input-text: #f0fdfa;
+  --border:     #334155;
+  --primary:    #178cc7;
+}
+
+/* 2) Layout base */
+body {
+  background: var(--bg-page);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+  background: var(--bg-page);
+  transition: background 0.3s;
+  overflow: hidden;
+}
+
+/* 3) PrimeNG overrides */
+.p-menubar,
+.p-toolbar {
+  background: var(--menu-bg) !important;
+  color: var(--menu-text) !important;
+  transition: background 0.3s, color 0.3s;
+}
+button[pButton] {
+  background:    var(--primary)    !important;
+  border-color:  var(--primary)    !important;
+  color:         var(--menu-text)  !important;
+}
+.p-card {
+  background:   var(--card-bg)   !important;
+  color:        var(--card-text) !important;
+  border:       1px solid var(--border) !important;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* 4) Animaciones y utilidades compartidas */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.spinner-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* 5) Mensajes genéricos */
+.message {
+  animation: fadeInUp 0.2s ease-out;
+  margin-bottom: 0.75rem;
+}
+.message-body {
+  background: var(--card-bg);
+  color:      var(--card-text);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+}
+
+/* 6) Área de entrada genérica */
+.input-area {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  background: var(--input-bg);
+  transition: background 0.3s, border-color 0.3s;
+}
+.input-area input[pInputText] {
+  flex: 1;
+  background: var(--input-bg) !important;
+  color: var(--input-text) !important;
+  border: 1px solid var(--border) !important;
+}
+.input-area button[pButton] {
+  background:    var(--primary)    !important;
+  border-color:  var(--primary)    !important;
+  color:         var(--card-text)  !important;
+}
+
+/* 7) Responsive genérico */
+@media (max-width: 640px) {
+  .chat-card {
+    width: calc(100% - 1rem);
+    margin: 0.5rem;
+    height: calc(100vh - 120px);
+  }
+}

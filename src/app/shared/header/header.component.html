@@ -1,15 +1,11 @@
-<!-- header.component.html -->
-<p-menubar>
-  <div class="flex align-items-center">
-    <img src="assets/logo.png" alt="Thinkia" height="36" />
-    <span class="ml-2 text-xl font-semibold">Thinkia Chat</span>
-  </div>
-  <ng-template pTemplate="end">
-    <button pButton type="button" label="Oscuro/Claro" icon="pi pi-moon"></button>
-  </ng-template>
-  <!-- en header.component.html -->
-<button pButton pRipple (click)="toggleTheme()">
-  {{ darkMode ? '🌙' : '☀️' }}
-</button>
-
-</p-menubar>
+<p-toolbar class="app-toolbar">
+  <img src="assets/images/thinkia-removebg.png" alt="Thinkia" height="32" />
+  <span class="toolbar-title">thinkia</span>
+  <button
+    pButton
+    pRipple
+    type="button"
+    (click)="toggleTheme()">
+    {{ darkMode ? '☀️ ' : '🌙 ' }}
+  </button>
+</p-toolbar>

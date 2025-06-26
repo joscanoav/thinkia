@@ -1,20 +1,21 @@
-// src/app/shared/header/header.component.ts
-import { Component } from '@angular/core';
-import { MenubarModule } from 'primeng/menubar';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ButtonModule }  from 'primeng/button';
+import { RippleModule }  from 'primeng/ripple';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MenubarModule],
+  imports: [ToolbarModule, ButtonModule, RippleModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']   // << Cambiado a styleUrls
+  styleUrls: ['./header.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent {
+  darkMode = false;
 
-// header.component.ts
-darkMode = false;
-toggleTheme() {
-  this.darkMode = !this.darkMode;
-  document.body.classList.toggle('dark', this.darkMode);
-}
+  toggleTheme() {
+    this.darkMode = !this.darkMode;
+    document.body.classList.toggle('dark', this.darkMode);
+  }
 }

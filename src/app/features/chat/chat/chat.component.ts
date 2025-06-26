@@ -50,7 +50,6 @@ export class ChatComponent implements AfterViewChecked {
   send(): void {
     const text = this.userInput.trim();
     if (!text) return;
-
     this.messages.push({ from: 'user', text, timestamp: new Date() });
     this.userInput = '';
     this.loading = true;

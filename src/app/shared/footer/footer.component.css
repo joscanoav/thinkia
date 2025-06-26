@@ -1,6 +1,7 @@
-/* footer.component.scss */
-:host ::ng-deep .footer-toolbar {
-  background: #ffffff;
-  border-top: 1px solid #e2e8f0;
-  font-size: 0.875rem;
+:host ::ng-deep .app-toolbar.footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 4rem;
+  padding: 0 1rem;
 }

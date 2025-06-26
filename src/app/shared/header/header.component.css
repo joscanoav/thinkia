@@ -1,14 +1,29 @@
-/* header.component.scss */
-:host ::ng-deep .p-menubar {
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-}
-body.dark {
-  --color-bg: #1e293b;
-  --color-primary: #10b981;
-  /* ajusta tablas, textos, bordes… */
+:host ::ng-deep .app-toolbar {
+  position: relative;           /* para que el .logo-group se posicione respecto a la toolbar */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important; /* empuja el botón al extremo derecho */
+  height: 4rem;
+  padding: 0 1rem;
 }
 
+/* grupo logo + título centrado */
+.logo-group {
+  position: absolute;           /* fuera del flujo flex */
+  left: 50%;                    /* punto medio */
+  transform: translateX(-50%);  /* ajusta su propio ancho */
+  display: flex;
+  align-items: center;
+}
 
+:host ::ng-deep .logo-group img {
+  height: 32px !important;
+  margin-right: 0.5rem;
+}
 
+.toolbar-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;   /* el margen lateral ya lo controla .logo-group */
+}
 
