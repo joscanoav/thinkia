@@ -1,59 +1,154 @@
+ChatGPT Plus
+md
+Copiar
+Editar
 # Thinkia
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+![Thinkia Logo](src/assets/images/thinkia.png)
 
-## Development server
+## Descripción
 
-To start a local development server, run:
+Thinkia es un chat interactivo construido con Angular (v19) que utiliza la inteligencia artificial de **Gemini** para configurar asistentes personalizados. Permite a los usuarios establecer objetivos, preferencias y restricciones, y recibir respuestas inteligentes basadas en aprendizaje profundo.
 
-```bash
+---
+
+## Características
+
+- 📱 **Single Page Application** desarrollada con Angular 19.  
+- 🤖 **Integración con Gemini AI** mediante un servicio dedicado.  
+- 💬 **Interfaz de chat** con burbujas de conversación diferenciadas (usuario vs IA).  
+- 🔄 **Scroll automático** al último mensaje.  
+- ⏳ **Spinner de carga** mientras la IA procesa la petición.  
+- 🌙 **Soporte Dark/Light Mode** configurable en tiempo real.  
+- 🎨 **Diseño responsive** basado en CSS variables y PrimeNG.  
+- 🧩 **Componentes standalone** para header, footer y chat.
+
+---
+
+## Requisitos previos
+
+- Node.js >= 18.x  
+- npm >= 9.x  
+- Angular CLI >= 19.2.15
+
+---
+
+## Instalación
+
+1. Clona el repositorio:  
+   ```bash
+   git clone https://github.com/tu-usuario/thinkia.git
+   cd thinkia
+Instala las dependencias:
+
+bash
+Copiar
+Editar
+npm install
+Crea un archivo .env en la raíz con tus credenciales de Gemini:
+
+ini
+Copiar
+Editar
+GEMINI_API_KEY=tu_api_key_aquí
+GEMINI_ENDPOINT=https://api.gemini.com/v1/chat
+Construye y sirve la aplicación en modo desarrollo:
+
+bash
+Copiar
+Editar
 ng serve
-```
+Abre tu navegador en http://localhost:4200.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Configuración de GeminiService
+El servicio GeminiService se encarga de enviar solicitudes a la API de Gemini y procesar las respuestas.
 
-## Code scaffolding
+ts
+Copiar
+Editar
+// src/app/services/gemini.service.ts
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+interface GeminiResponse {
+  candidates: { content: { parts: { text: string }[] }[] }[];
+}
 
-```bash
-ng generate component component-name
-```
+@Injectable({ providedIn: 'root' })
+export class GeminiService {
+  private apiKey = process.env.GEMINI_API_KEY;
+  private endpoint = process.env.GEMINI_ENDPOINT;
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+  constructor(private http: HttpClient) {}
 
-```bash
-ng generate --help
-```
+  public generate(prompt: string): Observable<GeminiResponse> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.apiKey}`
+    });
 
-## Building
+    return this.http.post<GeminiResponse>(
+      this.endpoint,
+      { prompt },
+      { headers }
+    );
+  }
+}
+Asegúrate de que tu proxy o CORS permita las solicitudes al endpoint de Gemini.
 
-To build the project run:
+Estructura de carpetas
+text
+Copiar
+Editar
+thinkia/
+├── src/
+│   ├── app/
+│   │   ├── features/
+│   │   │   └── chat/
+│   │   │       ├── chat.component.ts
+│   │   │       ├── chat.component.html
+│   │   │       └── chat.component.css
+│   │   ├── shared/
+│   │   │   ├── header/
+│   │   │   └── footer/
+│   │   └── services/
+│   │       └── gemini.service.ts
+│   ├── assets/
+│   │   └── logo.png
+│   ├── environments/
+│   └── index.html
+├── README.md
+└── package.json
+Scripts disponibles
+bash
+Copiar
+Editar
+# Servir en modo desarrollo (live reload)
+ng serve
 
-```bash
-ng build
-```
+# Compilar para producción
+ng build --prod
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
+# Ejecutar tests unitarios
 ng test
-```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
+# Ejecutar pruebas E2E
 ng e2e
-```
+Contribuir
+Haz un fork del proyecto.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Crea una branch (git checkout -b feature/nueva-funcion).
 
-## Additional Resources
+Haz tus cambios y commitea (git commit -m 'Agrega nueva función').
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Sube tu branch (git push origin feature/nueva-funcion).
+
+Abre un Pull Request.
+
+Licencia
+Este proyecto está bajo la licencia MIT. Revisa el archivo LICENSE para más detalles.
+
+© 2025 Thinkia
+
+Copiar
+Editar
